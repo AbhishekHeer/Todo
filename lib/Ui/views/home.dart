@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/Ui/views/addnote.dart';
+import 'package:todo_app/Ui/views/homebody.dart';
 import 'package:todo_app/Ui/views/search.dart';
 import 'package:todo_app/strings.dart';
 
@@ -17,7 +18,6 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
-
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -54,27 +54,7 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: height * .09),
-              child: const Center(
-                child: Image(
-                  image: AssetImage("Assets/Images/createnote.png"),
-                ),
-              ),
-            ),
-            Center(
-              child: Text(
-                "Create your first note !",
-                style: GoogleFonts.nunito(
-                    fontSize: 16, fontWeight: FontWeight.w400),
-              ),
-            )
-          ],
-        ),
-      ),
+      body: const Homebody(),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: Container(
           margin: EdgeInsets.only(bottom: height * .02),

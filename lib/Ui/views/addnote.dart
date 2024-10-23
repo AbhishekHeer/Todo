@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_app/Ui/widgets/alertdailog.dart';
 import 'package:todo_app/Ui/widgets/text.dart';
 import 'package:todo_app/strings.dart';
 
@@ -9,6 +10,9 @@ class Addnote extends StatefulWidget {
   @override
   State<Addnote> createState() => _AddnoteState();
 }
+
+final title = TextEditingController();
+final description = TextEditingController();
 
 class _AddnoteState extends State<Addnote> {
   @override
@@ -51,8 +55,19 @@ class _AddnoteState extends State<Addnote> {
               width: width * .14,
               decoration: const BoxDecoration(
                   color: buttonbgcolor, shape: BoxShape.circle),
-              child: const Center(
-                child: Icon(Icons.save),
+              child: Center(
+                child: InkWell(
+                    onTap: () {
+                      Alertdailogg.alertdailogg(
+                          context,
+                          "Save",
+                          const Text('Do You Want To Save ?'),
+                          height,
+                          width,
+                          title,
+                          description);
+                    },
+                    child: const Icon(Icons.save)),
               ),
             ),
           ],
@@ -64,9 +79,8 @@ class _AddnoteState extends State<Addnote> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                DisplayText.textfie(TextEditingController(), "Title", 30),
-                DisplayText.textfie(
-                    TextEditingController(), "Type Something here ...", 16),
+                DisplayText.textfie(title, "Title", 30),
+                DisplayText.textfie(description, "Type Something here ...", 16),
               ],
             ),
           ),
